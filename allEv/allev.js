@@ -100,9 +100,8 @@ const feed = document.getElementsByClassName("feed")[0]
 for(let i = 0;i<events.length;i++){
     feed.appendChild(document.createElement("button"))
     let post = feed.children[i]
-    
-    post.href="https://www.w3schools.com"
 }
+
 
 console.log(events.length)
 //loopka dodająca posty
@@ -131,15 +130,24 @@ function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
 }
 
-function handleTouchEnd(event) {
+function handleTouchEnd1(event) {
     touchEndX = event.changedTouches[0].clientX;
     // If the touch did not move horizontally, it's a tap, not a swipe
     if (touchStartX === touchEndX) {
-    window.location.href = "http://www.example.com";
+    window.location.href = "../event/eventtest1/eventpage1.html";
     }
 }
-        post.addEventListener('touchstart', handleTouchStart, false);
-        post.addEventListener('touchend', handleTouchEnd, false);
+function handleTouchEnd2(event) {
+    touchEndX = event.changedTouches[0].clientX;
+    // If the touch did not move horizontally, it's a tap, not a swipe
+    if (touchStartX === touchEndX) {
+    window.location.href = "../event/eventtest2/eventpage2.html";
+    }
+}
+        feed.children[0].addEventListener('touchstart', handleTouchStart, false);
+        feed.children[0].addEventListener('touchend', (handleTouchEnd1), false);
+        feed.children[4].addEventListener('touchstart', handleTouchStart, false);
+        feed.children[4].addEventListener('touchend', (handleTouchEnd2), false);
 
         //funkcja signcountowania
         let signedCount = feed.children[0].children[0].children[2].children[1].children[0].children[1].innerHTML
