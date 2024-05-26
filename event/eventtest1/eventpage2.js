@@ -81,7 +81,6 @@ class Event {
   
   querySnapshot.forEach(async(el) => {
     // doc.data() is never undefined for query doc snapshots
-    //console.log(doc.id, " => ", doc.data());
     events.push({
         "id":`${el.id}`,
         "title":`${el.data().title}`,
@@ -91,10 +90,10 @@ class Event {
         "creator":`${el.data().idCreatedBy}`,
         "image":`${el.data().imageList}`
     })
+    evName.innerHTML=events[4].title
+    evPic.src= `${events[4].image}`
+    evDep.innerHTML=events[4].facultaty
+    evinfo.innerHTML=events[4].description
   }
 );
-evName.innerHTML=events[4].title
-evPic.src= `${events[4].image}`
 
-evDep.innerHTML=events[4].facultaty
-evinfo.innerHTML=events[4].description
