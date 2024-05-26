@@ -68,3 +68,8 @@ class Event {
   const evName = document.getElementsByClassName("namep")[0]
   const evPic = document.getElementsByClassName("eventpng")[0]
   const evDep = document.getElementsByClassName("eventdep")[0]
+  const evinfo = document.getElementsByClassName("eventinfo")[0]
+  console.log(eventSnap.data())
+  evName.innerHTML=eventSnap.data().title
+  evDep.innerHTML=eventSnap.data().facultaty
+  evinfo.innerHTML=eventSnap.data().description
