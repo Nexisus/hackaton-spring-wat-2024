@@ -65,6 +65,36 @@ class Event {
   }
   const eventRef = doc(db,'eventsPublish',"HONsSQhOgWUutoYgMbxWAW5XoO52*~~@(*%&%#2024-05-25 18:57:00.591980[#c3655]")
   const eventSnap = await getDoc(eventRef);
-  const evName = document.getElementsByClassName("namep")[0]
+  const evName = document.getElementsByClassName("eventname")[0]
   const evPic = document.getElementsByClassName("eventpng")[0]
   const evDep = document.getElementsByClassName("eventdep")[0]
+  const evinfo = document.getElementsByClassName("eventinfo")[0]
+
+  let events=[
+
+  ]
+
+  const q = query(collection(db, "eventsPublish"));
+
+
+  const querySnapshot = await getDocs(q);
+  
+  querySnapshot.forEach(async(el) => {
+    // doc.data() is never undefined for query doc snapshots
+    //console.log(doc.id, " => ", doc.data());
+    events.push({
+        "id":`${el.id}`,
+        "title":`${el.data().title}`,
+        "facultaty":`${el.data().facultaty}`,
+        "description":`${el.data().description}`,
+        "time":`${el.data().dateTime}`,
+        "creator":`${el.data().idCreatedBy}`,
+        "image":`${el.data().imageList}`
+    })
+  }
+);
+evName.innerHTML=events[4].title
+evPic.src= `${events[4].image}`
+
+evDep.innerHTML=events[4].facultaty
+evinfo.innerHTML=events[4].description
