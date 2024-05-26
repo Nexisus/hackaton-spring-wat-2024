@@ -74,7 +74,7 @@ a{
     .post{
         margin-top: 30px;
         width: 90vw;
-        height: 70vh;
+        height: 500px;
         border: black solid 2px;
         display: flex;
         flex-direction: column;
@@ -142,6 +142,7 @@ a{
     }
     .postbot{
         margin-top: 5px;
+        margin-bottom: 20px;
         width:100%;
         height: 10vh;
     }
@@ -150,6 +151,7 @@ a{
         font-weight: 400;
         text-align: start;
         margin-left: 20px;
+        margin-bottom: 10px;
     }
     .signed{
         margin-left: 15px;
