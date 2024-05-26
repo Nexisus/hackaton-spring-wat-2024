@@ -74,7 +74,7 @@ a{
     .post{
         margin-top: 30px;
         width: 90vw;
-        height: 60vh;
+        height: 70vh;
         border: black solid 2px;
         display: flex;
         flex-direction: column;
