@@ -141,7 +141,7 @@ function handleTouchEnd2(event) {
     touchEndX = event.changedTouches[0].clientX;
     // If the touch did not move horizontally, it's a tap, not a swipe
     if (touchStartX === touchEndX) {
-    window.location.href = "../event/eventtest1/eventpage2.html";
+    window.location.href = "../event/eventtest2/eventpage2.html";
     }
 }
         feed.children[0].addEventListener('touchstart', handleTouchStart, false);
