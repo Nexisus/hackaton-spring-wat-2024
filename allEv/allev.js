@@ -103,6 +103,7 @@ for(let i = 0;i<events.length;i++){
     
     post.href="https://www.w3schools.com"
 }
+
 console.log(events.length)
 //loopka dodająca posty
 const filluppage = async () =>{
@@ -110,21 +111,19 @@ const filluppage = async () =>{
 
     console.log(addbut)
     const returnbut = document.getElementsByClassName("returnbut")
+
     for (let index = 0; index < events.length; index++) {
         let usr = doc(db,"users",`${events[index].creator}`)
         let usrsnap = await getDoc(usr);
-        feed.children[index].innerHTML += `<div class="post" id="${events[index].id}"><div class="posttop"><div class="user"><img class="userpng" src="${usrsnap.data().image}"><div class="userinfo"><div class="userinfo-cont"><div class="username">${usrsnap.data().username}</div><div class="cat"> w Edukacji</div></div><div class="posttime">3 minuty temu</div></div><div class="extenduserinfo"></div></div></div><img class="postpng" src="${events[index].image}"><div class="postbot"><p class="shortpostdesc">${events[index].title}</p><div class="posticons"><div class="signed"><div class="heart"></div><div class="signed-count">21 zapisanych</div></div><div class="coms"><div class="comsico"></div><div class="coms-count">4 komentarze</div></div></div></div></div>
+        let likes = 20;
+
+        feed.children[index].innerHTML += `<div class="post" id="${events[index].id}"><div class="posttop"><div class="user"><img class="userpng" src="${usrsnap.data().image}"><div class="userinfo"><div class="userinfo-cont"><div class="username">${usrsnap.data().username}</div><div class="cat"> w Edukacji</div></div><div class="posttime">3 minuty temu</div></div><div class="extenduserinfo"></div></div></div><img class="postpng" src="${events[index].image}"><div class="postbot"><p class="shortpostdesc">${events[index].title}</p><div class="posticons"><div class="signed"><div class="heart"></div><div class="signed-count">${likes} zapisanych</div></div><div class="coms"><div class="comsico"></div><div class="coms-count">${index+8} komentarze</div></div></div></div></div>
         `
         let post = feed.children[index]
+        post.children
         console.log(post)
-        post.addEventListener('touchstart',()=>{
-            console.log(`${index}`)
-        })
-    }
 
-}
 
-//funkcja kliknięcie; ignoruje swipe i drag events
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -136,18 +135,18 @@ function handleTouchEnd(event) {
     touchEndX = event.changedTouches[0].clientX;
     // If the touch did not move horizontally, it's a tap, not a swipe
     if (touchStartX === touchEndX) {
-      if (this.className === 'returnbut') {
-        window.location.href = "http://www.example.com";
-    } else if (this.className === 'addbut') {
-      window.location.href = "http://www.example.com";//wstaw adresy stronek
-    }
+    window.location.href = "http://www.example.com";
     }
 }
+        post.addEventListener('touchstart', handleTouchStart, false);
+        post.addEventListener('touchend', handleTouchEnd, false);
 
-let button = document.querySelector('.returnbut');
+        //funkcja signcountowania
+        let signedCount = feed.children[0].children[0].children[2].children[1].children[0].children[1].innerHTML
+        let signBut = feed.children[0].children[0].children[2].children[1].children[0].children[0]
 
-// Add the event listeners to the button
-button.addEventListener('touchstart', handleTouchStart, false);
-button.addEventListener('touchend', handleTouchEnd, false);
+    }
+
+}
 
 filluppage()
